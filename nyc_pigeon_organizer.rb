@@ -71,10 +71,12 @@ def nyc_pigeon_organizer(data)
     subattribute.each do |subattribute, names|
       names.each do |name|
         new_hash[name] = {} if !new_hash.has_key?(name)
+        
         if !new_hash[name].has_key?(attribute)
           new_hash[name] = attribute
           new_hash[name][attribute] = []
         end
+
         new_hash[name][attribute] << subattribute.to_s
       end
     end
