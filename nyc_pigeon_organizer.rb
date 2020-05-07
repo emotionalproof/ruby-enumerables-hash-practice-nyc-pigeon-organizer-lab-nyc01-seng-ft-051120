@@ -46,6 +46,9 @@ def nyc_pigeon_organizer(data)
     end
   end
 
+  def add_attributes(data, new_data, names)
+
+  end
 
   def add_attributes(data, new_data, names)
     add_color(data, new_data, names)
