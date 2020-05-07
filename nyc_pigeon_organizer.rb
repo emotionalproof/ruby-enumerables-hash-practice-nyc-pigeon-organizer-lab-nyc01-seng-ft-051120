@@ -47,7 +47,10 @@ def nyc_pigeon_organizer(data)
   end
 
   def add_attributes(data, new_data, names)
-
+    new_data.each do |name, attribute|
+      data[attribute].each do |attribute_name, name_array|
+        new_data[name][attribute] << location.to_s if name_array.include?(name)
+    end
   end
 
   def add_attributes(data, new_data, names)
@@ -59,4 +62,21 @@ def nyc_pigeon_organizer(data)
   add_attributes(data, new_data, names)
 
   new_data
+end
+
+def nyc_pigeon_organizer(data)
+  new_hash = {}
+
+  data.each do |attribute, subattribute|
+    subattribute.each do |subattribute, names|
+      names.each do |name|
+        new_hash[name] = {} if !new_hash.has_key?(name)
+        if !new_hash[name].has_key?(attribute)
+          new_hash[name] = attribute
+          new_hash[name][attribute] = []
+        end
+        new_hash[name][attribute] << subattribute.to_s
+      end
+    end
+  end
 end
